@@ -8,16 +8,11 @@ my_dict = {
   'Latitude':  69.07
 }
 
-# We can print the dictionary to show we have data. E.g.
-print(my_dict)
-print(my_dict['Location'])
 
-# Open a file for writing
-out_file = open("test.json","w")
+def write_to_json(file_name, data):
+   """Final output for generated data as JSON"""
 
-# Save the dictionary into this file
-# (the 'indent=4' is optional, but makes it more readable)
-json.dump(my_dict,out_file, indent=4)
-
-# Close the file
-out_file.close()
+    output_file = open(file_name + '.json', "w")
+    json.dump(data, output_file, indent=4)
+    output_file.close()
+    write_to_json('gg', data)
