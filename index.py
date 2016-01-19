@@ -2,6 +2,10 @@ import json
 import ObjectModelClasses as obj_class
 
 
+def get_id_list(length):
+    return [x for x in range(0, length)]
+
+
 def get_array(amount, class_name):
     """returns array of multiple objects"""
 
@@ -21,34 +25,33 @@ def write_to_json(file_name, data):
     output_file.close()
 
 
-platform_data = {
-    """ Stores all data related to platforms """
-    
-    'Currency': get_array(70, obj_class.Currency),
-    'Country': get_array(300, obj_class.Country),
-    'Language': get_array(120, obj_class.Language),
-    'Platform': get_array(65, obj_class.Platform),
-    'WorldBankRating': get_array(65, obj_class.WorldBankRanking),
-    'Platform_Type': get_array(20, obj_class.Platform_Type),
-    'Platform_Countries': get_array(100, obj_class.Platform_Countries),
-    'Platform_Language:': get_array(40, obj_class.Platform_Language),
-    'Platform_Office': get_array(80, obj_class.Platform_Office),
-    'Platform_Stat': get_array(65, obj_class.Platform_Stat),
-    'Category': get_array(20, obj_class.Category),
-    'Platform_Description': get_array(65, obj_class.Platform_Description),
-    'Platform_Fee': get_array(65, obj_class.Platform_Fee),
-    'Social_Media_Site': get_array(55, obj_class.Social_Media_Site),
-    'Platform_Status': get_array(65, obj_class.Platform_Status),
-    'Platform_Currency': get_array(65, obj_class.Platform_Currency),
-    'Platform_Contact': get_array(65, obj_class.Platform_Contact),
-    'Platform_Categories_Table': get_array(100, obj_class.Platform_Categories_Table)
-    
-}
+class Platform:
+  def __init__(self):
+    self.currency = obj_class.Currency()
+    self.country = obj_class.Country()
+    self.language = obj_class.Language(),
+    self.platform = obj_class.Platform(),
+    self.world_bank_ranking = obj_class.WorldBankRanking(),
+    self.platform_type = obj_class.Platform_Type(),
+    self.platform_countries = obj_class.Platform_Countries(),
+    self.platform_language = obj_class.Platform_Language(),
+    self.platform_office = obj_class.Platform_Office(),
+    self.platform_stat = obj_class.Platform_Stat(),
+    self.platform_category = obj_class.Category(),
+    self.platform_description = obj_class.Platform_Description(),
+    self.platform_fee = obj_class.Platform_Fee(),
+    self.social_media_site = obj_class.Social_Media_Site(),
+    self.platform_status = obj_class.Platform_Status(),
+    self.platform_currency = obj_class.Platform_Currency(),
+    self.platform_contact = obj_class.Platform_Contact(),
+    self.platform_categories_table = obj_class.Platform_Categories_Table()
+
+
+
 
 
 projects_data = {
     """ Stores all data related to projects """
-
 
     'Project': get_array(80000, obj_class.Project),
     'Type': get_array(40, obj_class.Type),
@@ -87,6 +90,3 @@ data_collection = {
     'Sessions_Users': sessions_and_users_data
     
 } 
-
-
-
