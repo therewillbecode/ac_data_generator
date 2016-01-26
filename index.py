@@ -46,7 +46,7 @@ class Platform:
     self.platform_contact = obj_class.Platform_Contact(),
     self.platform_categories_table = obj_class.Platform_Categories_Table()
 
-
+id_list = get_id_list(5)
 
 
 
