@@ -2,57 +2,57 @@ __author__ = 'Tom'
 __author__ = 'Tom'
 import PropertyDataGenerators as generate
 import random
-from index import id_list
-
-class Currency:
-    def __init__(self):
-        self.id = generate.get_rand_int(17)
-        self.name = generate.get_rand_text(15, 5)
-        self.name_native = generate.get_rand_text(20, 5)
-        self.iso4217_alpha3 = generate.get_rand_text(3, 2)
-        self.iso4217_num3 = generate.get_rand_text(3, 2)
-        self.symbol = generate.get_rand_text(3, 2)
 
 
-class Continents:
-    def __init__(self):
-        self.id = generate.get_rand_int(17)
-        self.name = generate.get_rand_text(11, 5)
 
 
-class Country:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.common_name = generate.get_rand_text(11, 5)
-        self.formal_name = generate.get_rand_text(11, 5)
-        self.continent_id = generate.get_rand_int(17)
-        self.currency_id = generate.get_rand_int(17)
-        self.type = generate.get_rand_text(11, 5)
-        self.capital = generate.get_rand_text(11, 5)
-        self.telephone_code = generate.get_rand_int(3)
-        self.letter_code_2 = generate.get_rand_int(2)
-        self.letter_code_3 = generate.get_rand_int(3)
-        self.iana_country_code = generate.get_rand_int(4)
-        self.lng = generate.get_rand_positive_double(700)
-        self.lat = generate.get_rand_positive_double(700)
-        self.developing_country = generate.get_rand_boolean()
 
 
-class Language:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.name = generate.get_rand_text(11, 5)
-        self.name_native = generate.get_rand_text(20, 5)
-        self.code = generate.get_rand_text(4, 2)
+id_list = [1,2,3,4,5]
 
 
-class Platform:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.name = generate.get_rand_text(11, 5)
-        self.url = generate.get_rand_text(11, 5)
-        self.year_founded = generate.get_rand_int(4)
-        self.created_at = generate.get_current_timestamp()
+#### as you can see to do is check the right data types match up to db and that there are apostrophes enclosing every element
+### next to do is change everything from objects to dicts
+currencies = {
+    'id': '\'5\'',
+    'name': '\'fdd\'',
+    'name_native': '\'fdd\'',
+    'iso4217_alpha3': '\'fdd\'',
+    'iso4217_num3': '\'gfd\'',
+    'symbol': '\'h\''}
+
+continents = {
+    'id': generate.get_rand_int(17),
+    'name': generate.get_rand_text(11, 5)}
+
+countries ={
+    'id': random.choice(id_list),
+    'common_name': generate.get_rand_text(11, 5),
+    'formal_name': generate.get_rand_text(11, 5),
+    'continent_id': generate.get_rand_int(17),
+    'currency_id': generate.get_rand_int(17),
+    'type': generate.get_rand_text(11, 5),
+    'capital': generate.get_rand_text(11, 5),
+    'telephone_code': generate.get_rand_int(3),
+    'letter_code_2': generate.get_rand_int(2),
+    'letter_code_3': generate.get_rand_int(3),
+    'iana_country_code': generate.get_rand_int(4),
+    'lng': generate.get_rand_positive_double(700),
+    'lat': generate.get_rand_positive_double(700),
+    'developing_country': generate.get_rand_boolean()}
+
+languages = {
+        'id': random.choice(id_list),
+        'name': generate.get_rand_text(11, 5),
+        'name_native': generate.get_rand_text(20, 5),
+        'code': generate.get_rand_text(4, 2)}
+
+platforms = {
+        'id': random.choice(id_list),
+        'name': generate.get_rand_text(11, 5),
+        'url': generate.get_rand_text(11, 5),
+        'year_founded': generate.get_rand_int(4),
+        'created_at': generate.get_current_timestamp()}
 
 
 class WorldBankRanking:
@@ -168,8 +168,8 @@ class Platform_Office:
         self.address_line_1 = generate.get_rand_text(15, 5)
         self.address_line_2 = generate.get_rand_text(11, 5)
         self.address_line_3 = generate.get_rand_text(11, 5)
-        self.zip = generate.get_rand_text(6)
-        self.city = generate.get_rand_text(8)
+        self.zip = generate.get_rand_text(20, 6)
+        self.city = generate.get_rand_text(20, 8)
         self.country_id = generate.get_rand_int(3)
         self.version_id = generate.get_rand_int(3)
         self.created_at = generate.get_current_timestamp()
