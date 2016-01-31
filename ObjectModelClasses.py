@@ -4,29 +4,29 @@ import PropertyDataGenerators as generate
 import random
 
 
-
-
-
-
-id_list = [1,2,3,4,5]
-
+# id generator
+def id_chooser():
+    id_list = [1, 2, 3, 4, 5, 6, 7, 8]
+    return  "\'" + str(random.choice(id_list)) + "\'",
 
 #### as you can see to do is check the right data types match up to db and that there are apostrophes enclosing every element
 ### next to do is change everything from objects to dicts
 currencies = {
-    'id': '\'5\'',
+    'id': id_chooser()
     'name': '\'fdd\'',
     'name_native': '\'fdd\'',
     'iso4217_alpha3': '\'fdd\'',
     'iso4217_num3': '\'gfd\'',
-    'symbol': '\'h\''}
+    'symbol': '\'h\''
+}
 
 continents = {
     'id': generate.get_rand_int(17),
-    'name': generate.get_rand_text(11, 5)}
+    'name': generate.get_rand_text(11, 5)
+}
 
-countries ={
-    'id': random.choice(id_list),
+countries = {
+    'id': id_chooser(),
     'common_name': generate.get_rand_text(11, 5),
     'formal_name': generate.get_rand_text(11, 5),
     'continent_id': generate.get_rand_int(17),
@@ -39,67 +39,61 @@ countries ={
     'iana_country_code': generate.get_rand_int(4),
     'lng': generate.get_rand_positive_double(700),
     'lat': generate.get_rand_positive_double(700),
-    'developing_country': generate.get_rand_boolean()}
+    'developing_country': generate.get_rand_boolean()
+}
 
 languages = {
-        'id': random.choice(id_list),
+        'id': id_chooser(),
         'name': generate.get_rand_text(11, 5),
         'name_native': generate.get_rand_text(20, 5),
-        'code': generate.get_rand_text(4, 2)}
+        'code': generate.get_rand_text(4, 2)
+}
 
 platforms = {
-        'id': random.choice(id_list),
+        'id': id_chooser(),
         'name': generate.get_rand_text(11, 5),
         'url': generate.get_rand_text(11, 5),
         'year_founded': generate.get_rand_int(4),
-        'created_at': generate.get_current_timestamp()}
+        'created_at': generate.get_current_timestamp()
+}
 
 
-class WorldBankRanking:
+world_bank_rankings = {
+        'id': id_chooser(),
+        'rank': generate.get_rand_int(3),
+        'country_id': generate.get_rand_int(3),
+        'created_at': generate.get_current_timestamp()
+}
+
+projects = {
+        'id': id_chooser(),
+        'platform_id': generate.get_rand_int(17),
+        'url': generate.get_rand_text(101, 5),
+        'external_project_id': generate.get_rand_text(11, 5),
+        'start_date': generate.get_current_timestamp(),
+        'currency_date': generate.get_current_timestamp(),
+        'language_id': generate.get_rand_int(17),
+        'country_id': generate.get_rand_int(17),
+        'created_at': generate.get_current_timestamp()
+}
+
+
+types = {
+        'id': id_chooser(),
+        'name': generate.get_rand_text(11, 5)
+        'created_at': generate.get_current_timestamp()
+
+
+class Platform_Reviews:
     def __init__(self):
-        self.id = random.choice(id_list)
-        self.rank = generate.get_rand_int(3)
-        self.country_id = generate.get_rand_int(3)
-        self.created_at = generate.get_current_timestamp()
-
-
-class Project:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.platform_id = generate.get_rand_int(17)
-        self.url = generate.get_rand_text(101, 5)
-        self.external_project_id = generate.get_rand_text(11, 5)
-        self.start_date = generate.get_current_timestamp()
-        self.currency_date = generate.get_current_timestamp()
-        self.language_id = generate.get_rand_int(17)
-        self.country_id = generate.get_rand_int(17)
-        self.created_at = generate.get_current_timestamp()
-
-
-class Type:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.name = generate.get_rand_text(11, 5)
-        self.created_at = generate.get_current_timestamp()
-        self.created_at = generate.get_current_timestamp()
-
-class Platform_Version:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.platform_id = generate.get_rand_int(17)
-        self.created_at = generate.get_current_timestamp()
-
-
-class Platform_Review:
-    def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.notes = generate.get_rand_text(110, 5)
         self.created_at = generate.get_current_timestamp()
         self.updated_at = generate.get_current_timestamp()
 
 
-class Platform_Status_Description:
+class Platform_Status_Descriptions:
     def __init__(self):
         self.code = self.name = generate.get_rand_text(30, 5)
         self.description = generate.get_rand_text(101, 5)
@@ -115,25 +109,19 @@ class Project_Status_Description:
         self.created_at = generate.get_current_timestamp()
 
 
-class Project_Update:
+class Project_Updates:
     def __init__(self):
-        self.id = generate.get_rand_int(17)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.description = generate.get_rand_text(110, 5)
         self.created_at = generate.get_current_timestamp()
         self.created_at = generate.get_current_timestamp()
 
 
-class Project_Version:
-    def __init__(self):
-        self.id = random.choice(id_list)
-        self.project_id = generate.get_rand_int(17)
-        self.created_at = generate.get_current_timestamp()
 
-
-class Platform_Type:
+class Platform_Types:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.type_id = generate.get_rand_int(17)
         self.version_id = generate.get_rand_int(17)
@@ -143,7 +131,7 @@ class Platform_Type:
 
 class Platform_Countries:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.country_id = generate.get_rand_int(17)
         self.version_id = generate.get_rand_int(17)
@@ -151,18 +139,18 @@ class Platform_Countries:
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Language:
+class Platform_Languages:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.language_id = generate.get_rand_int(17)
         self.version_id = generate.get_rand_int(17)
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Office:
+class Platform_Offices:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.type = generate.get_rand_text(11, 5)
         self.address_line_1 = generate.get_rand_text(15, 5)
@@ -175,9 +163,9 @@ class Platform_Office:
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Stat:
+class Platform_Stats:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.avg_amount_raised = generate.get_rand_positive_double(5000)
         self.success_rate = generate.get_rand_positive_double(100)
@@ -185,17 +173,17 @@ class Platform_Stat:
         self.created_at = generate.get_current_timestamp()
 
 
-class Category:
+class Categories:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.name = generate.get_rand_text(11, 5)
         self.created_at = generate.get_current_timestamp()
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Description:
+class Platform_Descriptions:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.motto = generate.get_rand_text(11, 5)
         self.description = generate.get_rand_text(500, 5)
@@ -208,9 +196,9 @@ class Platform_Description:
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Fee:
+class Platform_Fees:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.percentage = generate.get_rand_positive_double(100)
         self.fixed = generate.get_rand_positive_double(100)
@@ -218,16 +206,16 @@ class Platform_Fee:
         self.created_at = generate.get_current_timestamp()
 
 
-class Social_Media_Site:
+class Social_Media_Sites:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.name = generate.get_rand_text(11, 5)
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Status:
+class Platform_Statuses:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.code = generate.get_rand_text(11, 5)
         self.version_id = generate.get_rand_int(17)
@@ -236,7 +224,7 @@ class Platform_Status:
 
 class Platform_Currency:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.currency_id = generate.get_rand_int(3)
         self.created_at = generate.get_current_timestamp()
@@ -244,7 +232,7 @@ class Platform_Currency:
 
 class Project_Location:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.address_line_1 = generate.get_rand_text(11, 5)
         self.address_line_2 = generate.get_rand_text(11, 5)
@@ -257,7 +245,7 @@ class Project_Location:
 
 class Project_Status:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.url = generate.get_rand_text(41, 5)
         self.version_id = generate.get_rand_int(3)
@@ -266,7 +254,7 @@ class Project_Status:
 
 class Project_Contact:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.name = generate.get_rand_text(11, 5)
         self.title = generate.get_rand_text(14, 5)
@@ -278,7 +266,7 @@ class Project_Contact:
 
 class Project_Stats:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.total_donors = generate.get_rand_int(1)
         self.amount_goal = generate.get_rand_int(3)
@@ -288,9 +276,9 @@ class Project_Stats:
         self.created_at = generate.get_current_timestamp()
 
 
-class Project_Description:
+class Project_Descriptions:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.motto = generate.get_rand_text(20,10)
         self.description = generate.get_rand_text(700, 200)
@@ -299,9 +287,9 @@ class Project_Description:
         self.created_at = generate.get_current_timestamp()
 
 
-class Project_Category:
+class Project_Categories:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.project_id = generate.get_rand_int(17)
         self.category_id = generate.get_rand_int(17)
         self.version_id = generate.get_rand_int(3)
@@ -310,7 +298,7 @@ class Project_Category:
 
 class Project_Social_Media_Links:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.social_media_site_id = generate.get_rand_int(17)
         self.project_id = generate.get_rand_int(17)
         self.url = generate.get_rand_text(20, 10)
@@ -318,9 +306,9 @@ class Project_Social_Media_Links:
         self.created_at = generate.get_current_timestamp()
 
 
-class Platform_Contact:
+class Platform_Contacts:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.name = generate.get_rand_text(17 ,10)
         self.title = generate.get_rand_text(20,10)
@@ -332,7 +320,7 @@ class Platform_Contact:
 
 class Platform_Categories_Table:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.platform_id = generate.get_rand_int(17)
         self.category_id = generate.get_rand_int(17)
         self.version_id = generate.get_rand_int(17)
@@ -340,9 +328,9 @@ class Platform_Categories_Table:
         self.created_at = generate.get_current_timestamp()
 
 
-class User:
+class Users:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.name = generate.get_rand_text(17, 10)
         self.email = generate.get_rand_text(20, 10)
         self.password = generate.get_rand_text(8, 10)
@@ -351,9 +339,9 @@ class User:
         self.created_at = generate.get_current_timestamp()
 
 
-class Session:
+class Sessions:
     def __init__(self):
-        self.id = random.choice(id_list)
+        'id': id_chooser(),
         self.user_id = generate.get_rand_int(17)
         self.ip_address = generate.get_rand_int(9)
         self.user_agent = generate.get_rand_int(17)
