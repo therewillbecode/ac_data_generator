@@ -56,9 +56,23 @@ def insert_row2(con, tablename, keys_arr, values_arr):
         print("INSERT INTO " + tablename + " " + keys_arr + " VALUES " + values_arr + ";")
         cur.execute("INSERT INTO " + tablename + " " + keys_arr + " VALUES " + values_arr + ";")
 
-tab = 'platforms'
 
+def insert_to_db(table):
 
+    l = platform.keys()
+    table_names = []
+    for i in l:
+        table_names.append(i)
+
+    print(table_names)
+
+    key1 = list(get_table_keys_from_script(table))
+
+    value1 = list(get_table_values_from_script(table))
+
+    print(list_to_string_format(key1))
+
+    insert_row2(conn, table, list_to_string_format(key1), list_to_string_format(value1))
 
 # Connect to an existing database
 conn = psycopg2.connect("dbname=Allied user=postgres password=snowman66 host=localhost")
@@ -66,20 +80,9 @@ conn = psycopg2.connect("dbname=Allied user=postgres password=snowman66 host=loc
 # Open a cursor to perform database operations
 cur = conn.cursor()
 
-l = platform.keys()
-table_names = []
-for i in l:
-    table_names.append(i)
-
-print(table_names)
-
-key1 = list(get_table_keys_from_script(tab))
-
-value1 = list(get_table_values_from_script(tab))
-
-print(list_to_string_format(key1))
-
-insert_row2(conn, tab, list_to_string_format(key1), list_to_string_format(value1))
+for i in platform.keys():
+    insert_to_db(i)
+#insert_to_db('platforms')
 
 # Make the changes to the database persistent
 conn.commit()
