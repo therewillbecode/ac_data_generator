@@ -4,6 +4,7 @@ from index import platform
 import inspect
 import re
 
+
 # Connect to an existing database
 conn = psycopg2.connect("dbname=Allied user=postgres password=snowman66 host=localhost")
 
@@ -26,12 +27,13 @@ print(table_names)
 def get_table_keys_from_script(tablename):
     return(platform[tablename].keys())
 
-key1 = list(get_table_keys_from_script('currencies'))
+key1 = list(get_table_keys_from_script(tab))
 
 def get_table_values_from_script(tablename):
-    return(platform[tablename].values())
+    return platform[tablename].values()
 
-value1 = list(get_table_values_from_script('currencies'))
+value1 = list(get_table_values_from_script(tab))
+print(value1)
 print(value1)
 def check_col_exists_in_db_table(con, table_name, colname):
     try:
@@ -47,7 +49,7 @@ def check_col_exists_in_db_table(con, table_name, colname):
 
 
 print(key1)
-print(check_col_exists_in_db_table(conn, 'currencies', 'id'))
+print(check_col_exists_in_db_table(conn, tab, 'id'))
 
 def table_exists(con, table_str):
     exists = False
@@ -65,9 +67,11 @@ def table_exists(con, table_str):
     return exists
 
 """ Function converts list to ( , , , ,) format """
-def list_to_string_format(list1):
-    k = ', '.join(list1)
-    return '(' + k + ')'
+def list_to_string_format(value_list):
+    values = ','.join(str(v) for v in value_list)
+#    k = ', '.join(list1)
+    print('values: ' + values)
+    return '(' + values + ')'
 
 
 print(list_to_string_format(key1))
@@ -79,10 +83,10 @@ def insert_row2(con, tablename, keys_arr, values_arr):
     if table_exists(con, tablename) == True:
         print("INSERT INTO " + tablename + " " + keys_arr + " VALUES " + values_arr + ";")
         cur.execute("INSERT INTO " + tablename + " " + keys_arr + " VALUES " + values_arr + ";")
-#### TO DO - is check the right data types match up to db and that there are apostrophes enclosing every element 
+#### TO DO - is check the right data types match up to db and that there are apostrophes enclosing every element
 
 
-insert_row2(conn, 'currencies', list_to_string_format(key1), list_to_string_format(value1))
+insert_row2(conn, tab, list_to_string_format(key1), list_to_string_format(value1))
 
 # Execute a command: this creates a new table
 #cur.execute("CREATE TABLE test (id serial PRIMARY KEY, num integer, data varchar);")
