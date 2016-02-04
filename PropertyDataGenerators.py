@@ -3,11 +3,12 @@ __author__ = 'Tom'
 import random
 import time
 import string
-
+import psycopg2
 
 def get_current_timestamp():
-    result = time.strftime("%H:%M:%S%d/%m/%Y/")
-    return "\'" + str(result) + "\'"
+    #result = time.strftime("%H:%M:%S%d/%m/%Y/")
+    result = psycopg2.DateFromTicks(1489990000)
+    return "\'" + '2008-11-11' + "\'"
 
 
 def get_rand_int(length):
@@ -31,4 +32,5 @@ def get_rand_boolean():
     return "\'" + str(result) + "\'"
 
 
-print(get_rand_int(2))
+
+print(psycopg2.DateFromTicks(1489990000))
