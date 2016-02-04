@@ -53,6 +53,7 @@ def check_col_exists_in_db_table(con, table_name, colname):
 """ insert values of table in table in DB  """
 def insert_row2(con, tablename, keys_arr, values_arr):
     if table_exists(con, tablename) == True:
+        print(tablename)
         print("INSERT INTO " + tablename + " " + keys_arr + " VALUES " + values_arr + ";")
         cur.execute("INSERT INTO " + tablename + " " + keys_arr + " VALUES " + values_arr + ";")
 
