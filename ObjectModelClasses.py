@@ -11,6 +11,16 @@ def id_chooser():
     print(res)
     return res
 
+
+
+categories = {
+        'id': '5',
+        'name': generate.get_rand_text(11, 5),
+        'created_at': generate.get_current_timestamp(),
+        'updated_at': generate.get_current_timestamp()
+}
+
+
 #### as you can see to do is check the right data types match up to db and that there are apostrophes enclosing every element
 ### next to do is change everything from objects to dicts
 currencies = {
@@ -20,18 +30,19 @@ currencies = {
     'iso4217_alpha3': '\'fdd\'',
     'iso4217_num3': '\'gfd\'',
     'symbol': '\'h\''
+   # 'version_id': '1'
 }
 
 continents = {
-    'id': generate.get_rand_int(17),
+    'id': '5',
     'name': generate.get_rand_text(11, 5),
 }
 
 countries = {
-    'id': id_chooser(),
+    'id': '5',
     'common_name': generate.get_rand_text(11, 5),
     'formal_name': generate.get_rand_text(11, 5),
-    'continent_id': id_chooser(),
+    'continent_id': '5',
     'currency_id': id_chooser(),
     'type': generate.get_rand_text(11, 5),
     'capital': generate.get_rand_text(11, 5),
@@ -45,14 +56,14 @@ countries = {
 }
 
 languages = {
-        'id': id_chooser(),
+        'id': '5',
         'name': generate.get_rand_text(11, 5),
         'name_native': generate.get_rand_text(20, 5),
-        'code': generate.get_rand_text(4, 2)
+        'code': '\'gfd\''
 }
 
 platforms = {
-        'id': id_chooser(),
+        'id': '5',
         'name': generate.get_rand_text(11, 5),
         'url': generate.get_rand_text(11, 5),
         'year_founded': generate.get_rand_int(4),
@@ -62,14 +73,14 @@ platforms = {
 
 
 world_bank_rankings = {
-        'id': id_chooser(),
+        'id': '5',
         'rank': generate.get_rand_int(3),
         'country_id': id_chooser(),
         'created_at': generate.get_current_timestamp()
 }
 
 projects = {
-        'id': id_chooser(),
+        'id': '5',
         'platform_id': id_chooser(),
         'url': generate.get_rand_text(101, 5),
         'external_project_id': generate.get_rand_text(11, 5),
@@ -82,13 +93,13 @@ projects = {
 
 
 types = {
-        'id': id_chooser(),
+        'id': '5',
         'name': generate.get_rand_text(11, 5),
         'created_at': generate.get_current_timestamp()
 }
 
 platform_reviews = {
-    'id': id_chooser(),
+    'id': '5',
     'platform_id': id_chooser(),
     'notes': generate.get_rand_text(110, 5),
     'created_at': generate.get_current_timestamp(),
@@ -97,14 +108,14 @@ platform_reviews = {
 
 
 platform_status_descriptions = {
-        'code': generate.get_rand_text(30, 5),
+        'code': 'GHL5',
         'description': generate.get_rand_text(101, 5),
         'created_at': generate.get_current_timestamp()
 }
 
 
 platform_contacts = {
-        'id': id_chooser(),
+        'id': '5',
         'platform_id': id_chooser(),
         'name': generate.get_rand_text(17 ,10),
         'title': generate.get_rand_text(20,10),
@@ -115,35 +126,35 @@ platform_contacts = {
 }
 
 platform_categories_table ={
-        'id': id_chooser(),
+        'id': '5',
         'platform_id': id_chooser(),
-        'category_id': id_chooser(),
+        'category_id': '5',
         'version_id': id_chooser(),
-        'percentage': generate.get_rand_positive_double(100),
+        'percentage': generate.get_rand_positive_double(3),
         'created_at': generate.get_current_timestamp()
 }
 
 
 platform_types = {
-        'id': id_chooser(),
+        'id': '5',
         'platform_id': id_chooser(),
         'type_id': id_chooser(),
         'version_id': id_chooser(),
-        'percentage': generate.get_rand_positive_double(100),
+        'percentage': generate.get_rand_positive_double(3),
         'created_at': generate.get_current_timestamp()
 }
 
 platform_countries = {
-       'id': id_chooser(),
-       'platform_id': generate.get_rand_int(17),
-       'country_id': generate.get_rand_int(17),
-       'version_id': generate.get_rand_int(17),
-       'percentage': generate.get_rand_positive_double(100),
+       'id': '5',
+       'platform_id': id_chooser(),
+       'country_id': '5',
+       'version_id': id_chooser(),
+       'percentage': generate.get_rand_positive_double(3),
        'created_at': generate.get_current_timestamp()
 }
 
 platform_languages = {
-        'id': id_chooser(),
+        'id': '5',
         'platform_id': id_chooser(),
         'language_id': id_chooser(),
         'version_id': id_chooser(),
@@ -151,22 +162,22 @@ platform_languages = {
 }
 
 platform_offices = {
-        'id': id_chooser(),
+        'id': '5',
         'platform_id': id_chooser(),
         'type': generate.get_rand_text(11, 5),
-        'address_line_1': generate.get_rand_text(15, 5),
+        'address_line_1': generate.get_rand_text(11, 5),
         'address_line_2': generate.get_rand_text(11, 5),
         'address_line_3': generate.get_rand_text(11, 5),
-        'zip': generate.get_rand_text(20, 6),
-        'city': generate.get_rand_text(20, 8),
-        'country_id': id_chooser(),
+        'zip': generate.get_rand_text(8, 4),
+        'city': generate.get_rand_text(8, 4),
+        'country_id': '5',
         'version_id': id_chooser(),
         'created_at': generate.get_current_timestamp()
 }
 
 platform_stats = {
-        'id': id_chooser(),
-        'platform_id': id_chooser(),
+        'id':'5',
+        'platform_id': '5',
         'avg_amount_raised': generate.get_rand_positive_double(5000),
         'success_rate': generate.get_rand_positive_double(100),
         'version_id': id_chooser(),
@@ -175,8 +186,8 @@ platform_stats = {
 
 
 platform_fees = {
-        'id': id_chooser(),
-        'platform_id': id_chooser(),
+        'id': '5',
+        'platform_id': '5',
         'percentage': generate.get_rand_positive_double(100),
         'fixed': generate.get_rand_positive_double(100),
         'version_id': id_chooser(),
@@ -184,24 +195,24 @@ platform_fees = {
 }
 
 platform_statuses = {
-        'id': id_chooser(),
-        'platform_id': id_chooser(),
-        'code': generate.get_rand_text(11, 5),
+        'id': '5',
+        'platform_id': '5',
+        'code': 'GHL5',
         'version_id': id_chooser(),
         'created_at': generate.get_current_timestamp()
 }
 
 platform_currencies = {
-        'id': id_chooser(),
-        'platform_id': id_chooser(),
-        'currency_id': id_chooser(),
+        'id': '5',
+        'platform_id': '5',
+        'currency_id': '5',
         'created_at': generate.get_current_timestamp()
 }
 
 
 platform_descriptions = {
-        'id': id_chooser(),
-        'platform_id': id_chooser(),
+        'id': '5',
+        'platform_id': '5',
         'motto': generate.get_rand_text(11, 5),
         'description': generate.get_rand_text(500, 5),
         'mini_description': generate.get_rand_text(40, 5),
@@ -230,16 +241,6 @@ class Project_Updates:
         self.description = generate.get_rand_text(110, 5)
         self.created_at = generate.get_current_timestamp()
         self.created_at = generate.get_current_timestamp()
-
-
-
-class Categories:
-    def __init__(self):
-        'id': id_chooser(),
-        self.name = generate.get_rand_text(11, 5)
-        self.created_at = generate.get_current_timestamp()
-        self.created_at = generate.get_current_timestamp()
-
 
 class Social_Media_Sites:
     def __init__(self):
